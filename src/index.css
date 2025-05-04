@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  font-family: "Cal Sans";
+  font-family: "Cal Sans", "Pretendard";
   scroll-behavior: smooth;
 }
 
