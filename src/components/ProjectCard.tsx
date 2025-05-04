@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { ScrollReveal } from "./Projects";
 
 type ProjectCardProps = {
+  projectId: string;
   image: string;
   title: string;
   description: string;
@@ -8,6 +10,7 @@ type ProjectCardProps = {
 };
 
 export default function ProjectCard({
+  projectId,
   image,
   title,
   description,
@@ -15,7 +18,10 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <ScrollReveal>
-      <div className="flex flex-col items-center gap-8 md:flex-row md:gap-24">
+      <Link
+        to={`/projects/${projectId}`}
+        className="flex flex-col items-center gap-8 md:flex-row md:gap-24"
+      >
         <img
           src={image}
           alt="project image"
@@ -37,7 +43,7 @@ export default function ProjectCard({
             ))}
           </div>
         </div>
-      </div>
+      </Link>
     </ScrollReveal>
   );
 }

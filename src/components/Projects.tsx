@@ -30,6 +30,7 @@ export default function Projects() {
       <div className="flex w-full max-w-[1000px] flex-col gap-15 text-black">
         {projectsData.map((project) => (
           <ProjectCard
+            projectId={project.projectId}
             image={project.image}
             title={project.title}
             description={project.description}

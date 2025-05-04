@@ -1,13 +1,11 @@
 import Hero from "../components/Hero";
-import Projects from "../components/Projects";
 import Tech from "../components/Tech";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Hero />
       <Tech />
-      <Projects />
     </>
   );
 }
