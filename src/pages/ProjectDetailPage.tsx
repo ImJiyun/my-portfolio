@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { findProjectById } from "../util/findProjectById";
 import { BsGithub } from "react-icons/bs";
+import { FaFigma, FaLongArrowAltLeft } from "react-icons/fa";
 
 export default function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -23,9 +24,14 @@ export default function ProjectDetailPage() {
     achievements,
   } = project;
   return (
-    <section className="flex flex-col min-h-screen w-full justify-center items-center gap-16 p-4 py-30 md:px-14">
+    <section className="flex flex-col min-h-screen w-full gap-16 p-4 py-30 px-10 lg:px-70">
+      <Link to="/projects">
+        <span className="flex items-center gap-2 text-gray-700">
+          <FaLongArrowAltLeft /> 뒤로 가기
+        </span>
+      </Link>
       <div className="flex flex-col gap-3">
-        <h2 className="text-3xl text-blue-600">{title}</h2>
+        <h2 className="text-3xl text-blue-600 font-bold">{title}</h2>
         <p className="text-gray-700">{date}</p>
         <p>{description}</p>
         <div className="flex flex-wrap gap-2">
@@ -50,6 +56,7 @@ export default function ProjectDetailPage() {
             </span>
           )}
           <span className="flex items-center gap-2 text-gray-700">
+            <FaFigma />
             <a
               href={figma}
               target="_blank"
@@ -61,8 +68,12 @@ export default function ProjectDetailPage() {
           </span>
         </div>
       </div>
-      <div>
-        <img src={image} alt="project image" />
+      <div className="w-full flex justify-center">
+        <img
+          src={image}
+          alt="project image"
+          className="max-w-full w-[700px] max-h-[500px] object-contain"
+        />
       </div>
       <div className="flex flex-col gap-5">
         <h3 className="text-2xl text-blue-600 font-bold">기능 구현</h3>
@@ -74,16 +85,18 @@ export default function ProjectDetailPage() {
           ))}
         </ul>
       </div>
-      <div>
-        <h3 className="text-2xl text-blue-600 font-bold">성과</h3>
-        <ul className="list-disc pl-5 flex flex-col gap-2">
-          {achievements?.map((achievement, index) => (
-            <li key={index} className="text-gray-700">
-              {achievement}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {achievements && (
+        <div className="flex flex-col gap-5">
+          <h3 className="text-2xl text-blue-600 font-bold">성과</h3>
+          <ul className="list-disc pl-5 flex flex-col gap-2">
+            {achievements.map((achievement, index) => (
+              <li key={index} className="text-gray-700">
+                {achievement}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }
