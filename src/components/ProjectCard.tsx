@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ScrollReveal } from "./Projects";
+import { ScrollReveal } from "./ScrollReveal";
 
 type ProjectCardProps = {
   projectId: string;
